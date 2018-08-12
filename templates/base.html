@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+<head>
+	<title>STAR SOCIAL</title>
+
+	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+
+	<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+	
+	<link rel="stylesheet" href="{% static 'simplesocial/css/master.css' %}">
+
+</head>
+<body>
+
+	<nav class='navbar mynav' role='navigation' id="navbar">
+		<div class="container">
+			<a class="navbar-brand mynav" href="{% url 'home' %}">Star Social</a>
+			<ul class='nav navbar-nav navbar-right'>
+				{% if user.is_authenticated %}
+				<li> <a href="#">Post</a>
+				<li> <a href="#">Groups</a></li>
+				<li> <a href="#">Create Group</a></li>
+				<li><a href="{% url 'accounts:logout' %}">Log Out</a></li>
+				{% else %}
+				<li><a href="#">Groups</a></li>
+				<li><a href="{% url 'accounts:login' %}">Login</a></li>
+				<li><a href="{% url 'accounts:signup' %}">Sign Up</a></li>
+				{% endif %}
+			</ul>
+				}
+		</div>
+		
+	</nav>
+	
+<div class="container mycontent">
+{% block content %}
+
+{% endblock %}
+</div>
+
+</body>
+</html>
